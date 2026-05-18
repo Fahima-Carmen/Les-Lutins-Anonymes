@@ -7,7 +7,7 @@ erDiagram
         string name
         date celebration_date
         uuid admin_id
-        string status "draft, active, completed"
+        string status "draft, active, completed, voting"
         datetime created_at
         datetime voting_starts_at
         datetime voting_ends_at
