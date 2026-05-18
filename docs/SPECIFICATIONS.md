@@ -56,28 +56,35 @@ Utilisation du `LocalStorage`: l'application enregistre les derniers souhaits ta
 
 4. Notification finale : Un courriel de clôture du vote est envoyé à tous (soit avec les résultats, soit confirmant le maintien de la date initiale).
 
+### Flux 5: Supprimer un évènement
+1. Seul l'admin peut supprimer un évènement. L'Admin se rend sur son tableau de bord via son lien secret.
+2. Il clique sur un bouton "Supprimer l'événement".
+3. Le système demande une confirmation explicite pour éviter les erreurs de manipulation.
+4. Une fois confirmé, le système supprime l'entrée dans la table `Events`.
+5. Grâce aux contraintes SQL ON DELETE CASCADE, toutes les données liées (participants, votes, wishlist) sont instantanément effacées.
+6. L'Admin est redirigé vers la page d'accueil avec un message confirmant que "Toutes les données ont été supprimées avec succès".
 
 # Stack
 La stack pour ce projet a été choisie pour leur scalabilité et leur coût nul.
 
-1. Langage clé: TypeScript
+1. **Langage clé: TypeScript**
     - Apporte du typage statique
     - Détecter les erreurs avant le lancer l'application
   
-2. Front-End
+2. **Front-End**
    - Next.js (React Framework): gère le rendu des pages, la navigation, API Routes
    - Tailwind CSS: pour le design, plutôto qu'un long fichier CSS. On utilise les classes directement dans le HTML.
    - Shadcn/UI : Une bibliothèque de composants (boutons, formulaires, cartes) pour avoir un rendu professionnel sans passer des heures sur le design pur.
 
-3. Back-ENd & Infrastructure
+3. **Back-ENd & Infrastructure**
  - SQL (PostgreSQL): creer et interroger les tables.
  - Supabase Auth: pour gérer les accès sécurisés et les "liens magiques"
 
-4. Outils de communications et de validation
+4. **Outils de communications et de validation**
    - Resend / SendGrid : Pour l'envoi de courriels (via une API en TypeScript).
    - Zod : Une bibliothèque de validation de schéma. C'est l'outil parfait pour s'assurer que les données qui entrent dans ta base (comme les courriels des participants) sont au bon format.
    - Git / GitHub : Pour le versionnage et la gestion de projet (Kanban)
-5. Deploiement
+5. **Déploiement**
    -  Vercel: Gratuit pour les projets personnels avec un sous-domaine .vercel.app
 
 ## A voir
