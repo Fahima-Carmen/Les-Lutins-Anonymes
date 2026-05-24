@@ -6,7 +6,7 @@ Deploiement: Vercel ou Netlify
 
 
 # Exigences Fonctionnelles
-- Module Admin: création d'un événement, ajout/suppression de participants (Email+Nom), déclanchement du tirage.
+- Module Admin: création et suppression d'un événement, ajout/suppression de participants (Email+Nom), déclanchement du tirage.
 - Module Tirage: Algorithme avec contraintes d'exclusion (ex. un autre particiapant).
 - Module Notification: Envoi automatique des résultats par couriel (intégration API comme Resend ou SendGrid), vérification de la validité de l'adresse courriel.
 - Module Vote: Système de vote majoritaire pour révéler les résultats avant la date prévue (gestion des jetons de vote uniques).
@@ -30,14 +30,14 @@ Deploiement: Vercel ou Netlify
 
 ### Flux 2: Réception (Le Particiapant)
 1. Le participant reçoit le courriel contenant la personne assigner. 
-2. Il clique sur le bouton "Decouvrir" qui va le rediriger vers l'url d'une page contenant le nom de la personne assigner ainsi que sa wishlist.
+2. Il clique sur le bouton "Découvrir" qui va le rediriger vers l'url d'une page contenant le nom de la personne assigner ainsi que sa wishlist.
 3. Le participant peut voir les details de chaque cadeau et le lien vers l'acheteur.
 4. Il choisit quelle cadeau il va offir puis confirme son choix. Il peut changer de choix.
 5. Une fois le cadeau choisit, le système le marque comme 'offert' et le rend inacessible.
 
 ### Flux 3: Liste des souhaits (le particiapant)
 La liste des souhaits est spécifique à l'évènement en cours pour garantir la simplicité d'accès sans compte global.
-Utilisation du `LocalStorage`: l'application enregistre les derniers souhaits tapés dans le navigateur de l'utilisateur (via le localStorage). Comme ça, s'il rejoint un autre événement sur le même téléphone, ses souhaits réapparaissent comme par magie sans qu'il ait besoin d'un compte global
+Utilisation du `LocalStorage`: l'application enregistre les derniers souhaits tapés dans le navigateur de l'utilisateur (via le localStorage). Comme ça, s'il rejoint un autre événement sur le même téléphone, ses souhaits réapparaissent comme sans qu'il ait besoin d'un compte global
 
 1. Dans le courriel recu, le participant clique sur "Ma liste de souhaits".
 2. Il ajoute un élément dans sa wishlist en cliquant sur "Ajouter". Il fournit un nom, l'url du cadeau (pas obligatoire) et une description.
@@ -77,8 +77,8 @@ La stack pour ce projet a été choisie pour leur scalabilité et leur coût nul
    - Shadcn/UI : Une bibliothèque de composants (boutons, formulaires, cartes) pour avoir un rendu professionnel sans passer des heures sur le design pur.
 
 3. **Back-ENd & Infrastructure**
- - SQL (PostgreSQL): creer et interroger les tables.
- - Supabase Auth: pour gérer les accès sécurisés et les "liens magiques"
+    - SQL (PostgreSQL): creer et interroger les tables.
+    - Supabase Auth: pour gérer les accès sécurisés et les "liens magiques"
 
 4. **Outils de communications et de validation**
    - Resend / SendGrid : Pour l'envoi de courriels (via une API en TypeScript).
